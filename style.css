@@ -1,0 +1,110 @@
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #526277;
+  --line: #d7dee8;
+  --paper: #f4f6f8;
+  --card: #ffffff;
+  --button: #16315c;
+  --button-hover: #20457f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 18px/1.45 "Segoe UI", system-ui, sans-serif;
+}
+
+main {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+header { margin-bottom: 1.5rem; }
+
+h1 {
+  margin: 0 0 0.35rem;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+article {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1rem 1.1rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line);
+}
+
+article img {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+}
+
+h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.ver {
+  margin-left: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+p { margin: 0 0 0.75rem; }
+
+.file {
+  margin-top: -0.35rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+a { color: #1a4f91; }
+
+a:hover { color: #0f3468; }
+
+.download {
+  display: inline-block;
+  margin: 0.15rem 0 0.55rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  background: var(--button);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.download:hover {
+  background: var(--button-hover);
+  color: #fff;
+}
+
+.download:focus-visible,
+a:focus-visible {
+  outline: 3px solid #7aa2d6;
+  outline-offset: 2px;
+}
+
+code {
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 0.92em;
+}
+
+@media (max-width: 560px) {
+  article { grid-template-columns: 1fr; }
+  .download { display: block; text-align: center; }
+}

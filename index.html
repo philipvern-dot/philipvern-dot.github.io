@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programs</title>
+  <meta name="description" content="Free downloads for Video Beam, Video Dehydrator, and Image Converter.">
+  <link rel="icon" href="icons/video-beam.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Programs</h1>
+      <p>Free downloads. Each button saves the latest release.</p>
+    </header>
+
+    <article>
+      <img src="icons/video-beam.jpg" alt="" width="72" height="72">
+      <div>
+        <h2>Video Beam <span class="ver" id="ver-beam">Latest release</span></h2>
+        <p>A Windows program that downloads videos and playlists as MP4 files, or audio only as MP3. You can trim a clip.</p>
+        <p><a class="download" href="https://github.com/philipvern-dot/video_beam/releases/latest/download/video_beam.exe">Download for Windows</a></p>
+        <p class="file">video_beam.exe is the setup program. <a href="https://github.com/philipvern-dot/video_beam">Source</a></p>
+      </div>
+    </article>
+
+    <article>
+      <img src="icons/video-dehydrator.png" alt="" width="72" height="72">
+      <div>
+        <h2>Video Dehydrator <span class="ver" id="ver-dehydrator">Latest release</span></h2>
+        <p>Finds videos that are too big for their picture size, makes a smaller copy, and puts that copy where the original was.</p>
+        <p><a class="download" href="https://github.com/philipvern-dot/video-dehydrator/releases/latest/download/video_dehydrator.exe">Download for Windows</a></p>
+        <p class="file">video_dehydrator.exe is the setup program. <a href="https://github.com/philipvern-dot/video-dehydrator">Windows source</a></p>
+        <p><a class="download" href="https://github.com/philipvern-dot/video_dehydrator_linux/releases/latest/download/video_dehydrator_linux.tar.gz">Download for Linux</a></p>
+        <p class="file">Unpack video_dehydrator_linux.tar.gz and run <code>bash install.sh</code>. It runs on Ubuntu and on other desktops that can show a Qt window. <a href="https://github.com/philipvern-dot/video_dehydrator_linux">Linux source</a></p>
+      </div>
+    </article>
+
+    <article>
+      <img src="icons/image-converter.svg" alt="" width="72" height="72">
+      <div>
+        <h2>Image Converter <span class="ver" id="ver-image">Latest release</span></h2>
+        <p>A Windows program that converts pictures to PNG, JPEG, WebP, AVIF, SVG, GIF, TIFF, BMP, and other formats.</p>
+        <p><a class="download" href="https://github.com/philipvern-dot/image-converter/releases/latest/download/image_converter.exe">Download for Windows</a></p>
+        <p class="file">image_converter.exe is the setup program. <a href="https://github.com/philipvern-dot/image-converter">Source</a></p>
+      </div>
+    </article>
+  </main>
+  <script>
+    const versions = [
+      ["video_beam", "ver-beam"],
+      ["video-dehydrator", "ver-dehydrator"],
+      ["image-converter", "ver-image"]
+    ];
+    versions.forEach(function (item) {
+      fetch("https://api.github.com/repos/philipvern-dot/" + item[0] + "/releases/latest")
+        .then(function (response) { return response.ok ? response.json() : null; })
+        .then(function (data) {
+          if (data && data.tag_name) {
+            document.getElementById(item[1]).textContent = data.tag_name;
+          }
+        })
+        .catch(function () {});
+    });
+  </script>
+</body>
+</html>
